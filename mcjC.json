@@ -136,9 +136,9 @@
         {
           "substrate_(sub)structure": "CC[C@H](C)[C@H](NC(=O)CNC(=O)[C@@H](NC(=O)[C@H](Cc1ccccc1)NC(=O)[C@H](Cc1ccc(O)cc1)NC(=O)[C@H](CCC(=O)O)NC(=O)[C@@H]1CCCN1C(=O)[C@@H](NC(=O)[C@H](Cc1c[nH]cn1)NC(=O)CNC(=O)[C@H](C)NC(=O)CNC(=O)CN)C(C)C)C(C)C)C(=O)NCC(=O)N[C@H](C(=O)N1CCC[C@H]1C(=O)N[C@H](C(=O)N[C@@H](CO)C(=O)N[C@@H](Cc1ccccc1)C(=O)N[C@@H](Cc1ccc(O)cc1)C(=O)NCC(=O)O)[C@@H](C)CC)[C@@H](C)O",
           "product_(sub)structure": [
-            "CC[C@H](C)[C@H](NC(=O)CNC(=O)[C@@H](NC(=O)[C@H](Cc1ccccc1)NC(=O)[C@H](Cc1ccc(O)cc1)NC(=O)[C@@H]1CCC(=O)NCC(=O)NCC(=O)N[C@@H](C)C(=O)NCC(=O)N[C@@H](Cc2c[nH]cn2)C(=O)N[C@@H](C(C)C)C(=O)N2CCC[C@H]2C(=O)N1)C(C)C)C(=O)NCC(=O)N[C@H](C(=O)N1CCC[C@H]1C(=O)N[C@H](C(=O)N[C@@H](CO)C(=O)N[C@@H](Cc1ccccc1)C(=O)N[C@@H](Cc1ccc(O)cc1)C(=O)NCC(=O)O)[C@@H](C)CC)[C@@H](C)O.O"
+            "CC[C@H](C)[C@H](NC(=O)CNC(=O)[C@@H](NC(=O)[C@H](Cc1ccccc1)NC(=O)[C@H](Cc1ccc(O)cc1)NC(=O)[C@@H]1CCC(=O)NCC(=O)NCC(=O)N[C@@H](C)C(=O)NCC(=O)N[C@@H](Cc2c[nH]cn2)C(=O)N[C@@H](C(C)C)C(=O)N2CCC[C@H]2C(=O)N1)C(C)C)C(=O)NCC(=O)N[C@H](C(=O)N1CCC[C@H]1C(=O)N[C@H](C(=O)N[C@@H](CO)C(=O)N[C@@H](Cc1ccccc1)C(=O)N[C@@H](Cc1ccc(O)cc1)C(=O)NCC(=O)O)[C@@H](C)CC)[C@@H](C)O"
           ],
-          "isBalanced": true,
+          "isBalanced": false,
           "isAuthentic": true,
           "isIntermediate": false,
           "description": "Lasso macrocyclisation of microcin J25 after precursor cleavage, leading to mature product.",
