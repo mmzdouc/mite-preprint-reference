@@ -1,0 +1,6 @@
+{
+  "$id": "https://meta.secondarymetabolites.org/schemas/common/smiles.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "string",
+  "pattern": "^[\\[\\]a-zA-Z0-9\\@()=\\/\\\\#+.%*-]+"
+}

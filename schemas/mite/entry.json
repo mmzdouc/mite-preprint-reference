@@ -1,0 +1,78 @@
+{
+  "$id": "https://meta.secondarymetabolites.org/schemas/mite/entry.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "title": "Minimum Information about a Tailoring Enzyme/Maturase Data Standard",
+  "additionalProperties": false,
+  "properties": {
+    "accession": {
+      "title": "MITE accession number/identifier.",
+      "$ref": "#/$defs/entryId"
+    },
+    "changelog": {
+      "title": "Log tracking changes in entry.",
+      "$ref": "/schemas/common/changelog.json"
+    },
+    "quality": {
+      "title": "Track quality of entry.",
+      "$ref": "#/$defs/quality"
+    },
+    "status": {
+      "title": "Track status of entry.",
+      "$ref": "#/$defs/status"
+    },
+    "enzyme": {
+      "title": "(Meta)data about the enzyme described by entry.",
+      "$ref": "/schemas/mite/enzyme.json"
+    },
+    "compounds": {
+      "title": "Mature compound(s) (end products) associated with enzyme (were acted on by enzyme).",
+      "type": "array",
+      "items": {
+        "$ref": "/schemas/mite/compounds.json"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "genomic_context": {
+      "title": "(Meta)data on genomic context of the enzyme (associated biosynthetic gene cluster).",
+      "$ref": "/schemas/mite/genomic_context.json"
+    },
+    "reactions": {
+      "title": "One or more reactions associated with enzyme.",
+      "type": "array",
+      "items": {
+        "$ref": "/schemas/mite/reactions.json"
+      },
+      "minItems": 1
+    },
+    "comment": {
+      "title": "Any additional information about this entry",
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "entryId": {
+      "type": "string",
+      "pattern": "^MITE\\d{7,7}$"
+    },
+    "quality": {
+      "type": "string",
+      "enum": ["questionable", "low", "medium", "high"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "embargoed", "active", "retired"]
+    }
+  },
+  "required": [
+    "accession",
+    "changelog",
+    "quality",
+    "status",
+    "enzyme",
+    "compounds",
+    "genomic_context",
+    "reactions"
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "$id": "https://meta.secondarymetabolites.org/schemas/mite/genomic_context.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "classes": {
+      "title": "Biosynthetic class of biosynthetic gene cluster enzyme is associated with, if applicable.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/classes"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "accession_genome": {
+      "title": "NCBI GenBank genome accession number/ID. RefSeq genomes are prohibited.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "accessionID": {
+          "type": "string"
+        },
+        "start": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "stop": {
+          "type": "integer",
+          "minimum": 2
+        }
+      }
+    },
+    "taxonomy": {
+      "title": "Information about organism enzyme/BGC derive from.",
+      "$ref": "/schemas/common/taxonomy.json"
+    },
+    "databaseIds": {
+      "title": "Database cross-references.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/databaseId"
+      },
+      "uniqueItems": true
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "required": ["evidence"],
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "title": "Evidence for BGC existence.",
+          "type": "string",
+          "enum": [
+            "Homology-based prediction",
+            "Correlation of genomic and metabolomic data",
+            "Gene expression correlated with compound production",
+            "Knock-out studies",
+            "Enzymatic assays",
+            "Heterologous expression",
+            "In vitro expression"
+          ]
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "$ref": "/schemas/common/citation.json"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": ["method", "references"]
+    },
+    "databaseId": {
+      "type": "string",
+      "oneOf": [
+        {
+          "pattern": "^mibig:BGC(\\d{7,7})$"
+        }
+      ]
+    },
+    "classes": {
+      "type": "string",
+      "enum": [
+        "NRPS",
+        "PKS",
+        "Other",
+        "Ribosomal",
+        "Saccharide",
+        "Terpene"
+      ]
+    }
+  }
+}

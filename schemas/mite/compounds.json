@@ -1,0 +1,113 @@
+{
+  "$id": "https://meta.secondarymetabolites.org/schemas/mite/compounds.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "type": "object",
+  "properties": {
+    "name": {
+      "title": "Customarily used compound name.",
+      "$ref": "#/$defs/name"
+    },
+    "synonyms": {
+      "title": "Known synonym compound names.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/name"
+      },
+      "uniqueItems": true
+    },
+    "classes": {
+      "title": "Chemical class of compound.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/class"
+      },
+      "uniqueItems": true
+    },
+    "structure": {
+      "title": "Compound chemical structure as SMILES string.",
+      "$ref": "/schemas/common/smiles.json"
+    },
+    "databaseIds": {
+      "title": "Database cross-references.",
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/databaseId"
+      },
+      "uniqueItems": true
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/evidence"
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    }
+  },
+  "required": ["name", "evidence"],
+  "$defs": {
+    "class": {
+      "type": "string"
+    },
+    "databaseId": {
+      "type": "string",
+      "oneOf": [
+        {
+          "pattern": "^pubchem:(\\d+)$"
+        },
+        {
+          "pattern": "^chebi:(\\d+)$"
+        },
+        {
+          "pattern": "^chembl:CHEMBL(\\d+)$"
+        },
+        {
+          "pattern": "^chemspider:(\\d+)$"
+        },
+        {
+          "pattern": "^npatlas:NPA(\\d+)$"
+        },
+        {
+          "pattern": "^lotus:Q(\\d+)$"
+        },
+        {
+          "pattern": "^gnps:MSV(\\d+)$"
+        },
+        {
+          "pattern": "^cyanometdb:CyanoMetDB_(\\d{4,4})$"
+        }
+      ]
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": [
+            "NMR",
+            "Mass spectrometry",
+            "MS/MS",
+            "X-ray crystallography",
+            "Chemical derivatisation",
+            "Total synthesis"
+          ]
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "$ref": "/schemas/common/citation.json"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": ["method", "references"]
+    },
+    "name": {
+      "type": "string",
+      "pattern": "^[a-zA-Zα-ωΑ-Ω0-9\\[\\]'()/&,. +-]+$"
+    }
+  }
+}
